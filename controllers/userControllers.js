@@ -17,7 +17,7 @@ exports.auth = async (req, res, next) => {
   }
 }
 
-exports.createUser = async (req, res) => {
+exports.createTodoItem = async (req, res) => {
   try{
     const user = new User(req.body)
     await user.save()
@@ -42,7 +42,7 @@ exports.loginUser = async (req, res) => {
   }
 }
 
-exports.updateUser = async (req, res) => {
+exports.updateItem = async (req, res) => {
   try{
     const updates = Object.keys(req.body)
     const user = await User.findOne({ _id: req.params.id })
@@ -55,7 +55,7 @@ exports.updateUser = async (req, res) => {
   
 }
 
-exports.deleteUser = async (req, res) => {
+exports.deleteItem = async (req, res) => {
   try{
     await req.user.deleteOne()
     res.json({ message: 'User deleted' })
